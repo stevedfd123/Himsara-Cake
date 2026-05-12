@@ -9,10 +9,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss()],
 
-    // IMPORTANT:
-    // Replace 'YOUR-REPO-NAME' with your actual GitHub repository name
-    // Example: /ACE/ or /SLFBC/
-    base: '/YOUR-REPO-NAME/',
+    // GitHub Pages base path
+    base: '/Himsara-Cake/',
 
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
