@@ -4,18 +4,13 @@ import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, '.', '');
+  loadEnv(mode, process.cwd(), '');
 
   return {
     plugins: [react(), tailwindcss()],
 
-    // IMPORTANT for GitHub Pages
-    // MUST match your repo name exactly
+    // MUST match repo name exactly
     base: '/Himsara-Cake/',
-
-    define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
-    },
 
     resolve: {
       alias: {
@@ -23,13 +18,9 @@ export default defineConfig(({ mode }) => {
       },
     },
 
-    server: {
-      hmr: process.env.DISABLE_HMR !== 'true',
-    },
-
     build: {
       outDir: 'dist',
-      emptyOutDir: true,
+      assetsDir: 'assets',
     },
   };
 });
